@@ -1,0 +1,21 @@
+[package]
+name = "chalco"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+default = ["wgpu"]
+three_d = ["dep:egui_render_three_d", "egui_overlay/three_d"]
+wgpu = ["dep:egui_render_wgpu", "egui_overlay/wgpu"]
+
+[dependencies]
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+egui = "0.26"
+egui_overlay = { version = "0.8.1", default-features = false, features = [
+    "egui_default",
+    "glfw_default",
+] }
+egui_window_glfw_passthrough = { version = "0.8.1", features = ["image"] }
+egui_render_three_d = { version = "0.8", optional = true }
+egui_render_wgpu = { version = "0.8", optional = true }
+image = { version = "0" }
